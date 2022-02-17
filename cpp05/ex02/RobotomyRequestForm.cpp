@@ -28,22 +28,9 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 	return (*this);
 }
 
-void	RobotomyRequestForm::execute(const Bureaucrat& executor)
+void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
-	try
-	{
-		this->executable(executor);
-	}
-	catch(AForm::UnsignedFormException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
-	catch(GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
+	this->executable(executor);
 	std::cout << "VrrRrrRrrrrRRRrrrr~" << std::endl;
 	std::cout << "VRRRRRrrrrrrrRRRRRRRrrrrrr~" << std::endl;
 	std::cout << "VRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR~" << std::endl;

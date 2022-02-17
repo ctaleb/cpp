@@ -1,6 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void): AForm("RobotomyRequestForm", 72, 45), _target("The Joker")
+RobotomyRequestForm::RobotomyRequestForm(void) : AForm("RobotomyRequestForm", 72, 45), _target("The Joker")
 {
 	std::cout << this->getName() << " was illegally created." << std::endl;
 }
@@ -10,7 +10,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 	std::cout << this->getName() << " has been destroyed." << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyRequestForm", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
 	std::cout << this->getName() << " has been created." << std::endl;
 }
@@ -28,22 +28,9 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 	return (*this);
 }
 
-void	RobotomyRequestForm::actExec(const Bureaucrat& executor)
+void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
-	try
-	{
-		this->execute(executor);
-	}
-	catch(AForm::UnsignedFormException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
-	catch(GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
+	this->executable(executor);
 	std::cout << "VrrRrrRrrrrRRRrrrr~" << std::endl;
 	std::cout << "VRRRRRrrrrrrrRRRRRRRrrrrrr~" << std::endl;
 	std::cout << "VRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR~" << std::endl;

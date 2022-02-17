@@ -1,6 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void): AForm("ShrubberyCreationForm", 145, 137), _target("The Joker")
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", 145, 137), _target("The Joker")
 {
 	std::cout << this->getName() << " was illegally created." << std::endl;
 }
@@ -10,7 +10,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 	std::cout << this->getName() << " has been destroyed." << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
 	std::cout << this->getName() << " has been created." << std::endl;
 }
@@ -28,23 +28,9 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void	ShrubberyCreationForm::actExec(const Bureaucrat& executor)
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
-	try
-	{
-		this->execute(executor);
-	}
-	catch(AForm::UnsignedFormException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
-	catch(GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
-	
+	this->executable(executor);
 	std::ifstream	ifs(this->_target + "_shrubbery");
 	if (ifs.fail())
 		ifs.close();

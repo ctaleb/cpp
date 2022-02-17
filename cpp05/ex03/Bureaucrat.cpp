@@ -124,7 +124,6 @@ void	Bureaucrat::executeForm(AForm& paper)
 		return ;
 	}
 	std::cout << this->_name << " has executed " << paper.getName() << " successfully." << std::endl;
-	paper.actExec(*this);
 }
 
 std::ostream&	operator<<(std::ostream& o, const Bureaucrat& rhs)

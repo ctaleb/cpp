@@ -35,7 +35,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 
 Bureaucrat::Bureaucrat(const Bureaucrat& src) : _name(src._name), _grade(src._grade)
 {
-	std::cout << src.getName() << " has been cloned.";
+	std::cout << src._name << " has been cloned." << std::endl;
 }
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& rhs)
@@ -124,7 +124,6 @@ void	Bureaucrat::executeForm(AForm& paper)
 		return ;
 	}
 	std::cout << this->_name << " has executed " << paper.getName() << " successfully." << std::endl;
-	paper.actExec(*this);
 }
 
 std::ostream&	operator<<(std::ostream& o, const Bureaucrat& rhs)

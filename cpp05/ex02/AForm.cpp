@@ -64,7 +64,6 @@ void	AForm::beSigned(const Bureaucrat& worker)
 		throw AForm::AlreadySignedException();
 }
 
-
 void	AForm::executable(const Bureaucrat& executor) const
 {
 	if (!this->_signed)

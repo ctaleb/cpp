@@ -28,23 +28,9 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void	ShrubberyCreationForm::execute(const Bureaucrat& executor)
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
-	try
-	{
-		this->executable(executor);
-	}
-	catch(AForm::UnsignedFormException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
-	catch(GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
-	
+	this->executable(executor);
 	std::ifstream	ifs(this->_target + "_shrubbery");
 	if (ifs.fail())
 		ifs.close();

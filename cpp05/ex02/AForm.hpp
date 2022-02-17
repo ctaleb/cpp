@@ -17,7 +17,7 @@ private:
 	const int			_execGrade;
 public:
 	AForm(void);
-	virtual ~AForm(void);
+	virtual	~AForm(void);
 	AForm(std::string name, int signGrade, int execGrade);
 	AForm(const AForm& src);
 

@@ -1,6 +1,6 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void): AForm("PresidentialPardonForm", 25, 5), _target("The Joker")
+PresidentialPardonForm::PresidentialPardonForm(void) : AForm("PresidentialPardonForm", 25, 5), _target("The Joker")
 {
 	std::cout << this->getName() << " was illegally created." << std::endl;
 }
@@ -10,7 +10,7 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 	std::cout << this->getName() << " has been destroyed." << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("PresidentialPardonForm", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
 	std::cout << this->getName() << " has been created." << std::endl;
 }
@@ -28,21 +28,8 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-void	PresidentialPardonForm::actExec(const Bureaucrat& executor)
+void	PresidentialPardonForm::execute(const Bureaucrat& executor) const
 {
-	try
-	{
-		this->execute(executor);
-	}
-	catch(AForm::UnsignedFormException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
-	catch(GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return ;
-	}
+	this->executable(executor);
 	std::cout << this->_target << " has been pardonned by Zaphod Beeblerox." << std::endl;
 }

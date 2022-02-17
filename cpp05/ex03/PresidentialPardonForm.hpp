@@ -15,9 +15,7 @@ public:
 
 	PresidentialPardonForm&	operator=(const PresidentialPardonForm& rhs);
 
-	void	actExec(const Bureaucrat& executor);
+	void	execute(const Bureaucrat& executor) const;
 };
-
-// std::ostream&		operator<<(std::ostream& o, const PresidentialPardonForm& rhs);
 
 #endif

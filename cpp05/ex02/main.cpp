@@ -8,7 +8,6 @@ int	main(void)
 	PresidentialPardonForm		p1("Ken");
 	RobotomyRequestForm			p2("Hakim");
 	ShrubberyCreationForm		p3("hill");
-	std::cout << "----------------------------------------" << std::endl;
 	Bureaucrat	b1("Alfred", 1);
 	Bureaucrat	b2("John", 71);
 
