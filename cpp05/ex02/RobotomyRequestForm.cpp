@@ -28,11 +28,11 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 	return (*this);
 }
 
-void	RobotomyRequestForm::actExec(const Bureaucrat& executor)
+void	RobotomyRequestForm::execute(const Bureaucrat& executor)
 {
 	try
 	{
-		this->execute(executor);
+		this->executable(executor);
 	}
 	catch(AForm::UnsignedFormException& e)
 	{

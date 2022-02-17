@@ -28,11 +28,11 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void	ShrubberyCreationForm::actExec(const Bureaucrat& executor)
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor)
 {
 	try
 	{
-		this->execute(executor);
+		this->executable(executor);
 	}
 	catch(AForm::UnsignedFormException& e)
 	{

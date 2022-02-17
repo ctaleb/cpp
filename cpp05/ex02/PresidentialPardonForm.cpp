@@ -28,11 +28,11 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-void	PresidentialPardonForm::actExec(const Bureaucrat& executor)
+void	PresidentialPardonForm::execute(const Bureaucrat& executor)
 {
 	try
 	{
-		this->execute(executor);
+		this->executable(executor);
 	}
 	catch(AForm::UnsignedFormException& e)
 	{
@@ -46,14 +46,3 @@ void	PresidentialPardonForm::actExec(const Bureaucrat& executor)
 	}
 	std::cout << this->_target << " has been pardonned by Zaphod Beeblerox." << std::endl;
 }
-
-// std::ostream&	operator<<(std::ostream& o, const PresidentialPardonForm& rhs)
-// {
-// 	o << rhs.getName() << ", ";
-// 	if (rhs.getSigned())
-// 		o << "signed";
-// 	else
-// 		o << "unsigned";
-// 	o << " form of access grade " << rhs.getSignGrade() << " and of exec grade " << rhs.getExecGrade() << ".";
-// 	return (o);
-// }
