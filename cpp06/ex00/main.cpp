@@ -11,7 +11,9 @@ void	dataInit(t_printData*	data)
 
 bool	_isnan(t_printData* data)
 {
-	if (!data->str.compare("nan") || !data->str.compare("nanf"))
+	if (!data->str.compare("nan") || !data->str.compare("nanf")		\
+		|| !data->str.compare("+nan") || !data->str.compare("+nanf")	\
+		|| !data->str.compare("-nan") || !data->str.compare("-nanf"))
 		return (true);
 	return (false);
 }
@@ -45,7 +47,6 @@ void	doubleConv(t_printData* data)
 
 void	floatConv(t_printData* data)
 {
-	//999 999 -> 
 	data->f = static_cast<float>(data->d);
 	if (_isnan(data))
 	{
@@ -69,7 +70,7 @@ void	intConv(t_printData* data)
 		data->specialCase[1] = true;
 		data->specialMsg[1] = CNV_MSG;
 	}
-	if (_isnan(data) || data->d / data->d != 1)
+	else if (_isnan(data) /* || data->d / data->d != 1 */)
 	{
 		data->specialCase[1] = true;
 		data->specialMsg[1] = CNV_MSG;
@@ -79,36 +80,32 @@ void	intConv(t_printData* data)
 
 void	charConv(t_printData*	data)
 {
-	if (data->str.length() != 1)
+	if (data->str.length() == 1 && !isdigit(data->str[0]))
 	{
-		data->specialCase[0] = true;
-		data->specialMsg[0] = CNV_MSG;
+		if (data->arg[0])
+			data->c = data->arg[0];
+		else
+			data->c = 0;
 	}
-	if (data->arg[0])
-		data->c = data->arg[0];
 	else
-		data->c = 0;
-	if (data->c > 127 || data->c < 32)
 	{
-		data->specialCase[0] = true;
-		data->specialMsg[0] = CHA_MSG;
+		if (_isnan(data) || _isinf(data))
+		{
+			data->specialCase[0] = true;
+			data->specialMsg[0] = CNV_MSG;
+		}
+		else if ((data->d >= 0 && data->d < 32) || (data->d > 127 && data->d <= 255))
+		{
+			data->specialCase[0] = true;
+			data->specialMsg[0] = CHA_MSG;
+		}
+		else if (data->d < 0 || data->d > 255)
+		{
+			data->specialCase[0] = true;
+			data->specialMsg[0] = CNV_MSG;
+		}
+		data->c = static_cast<char>(data->d);
 	}
-	// if (data->d < 0 || data->d > 255)
-	// {
-	// 	data->specialCase[0] = true;
-	// 	data->specialMsg[0] = CNV_MSG;
-	// }
-	// if (_isnan(data))
-	// {
-	// 	data->specialCase[0] = true;
-	// 	data->specialMsg[0] = CNV_MSG;
-	// }
-	// if (_isinf(data))
-	// {
-	// 	data->specialCase[0] = true;
-	// 	data->specialMsg[0] = CNV_MSG;
-	// }
-	// data->c = static_cast<char>(data->d);
 }
 
 void	printAll(t_printData data)
@@ -117,7 +114,7 @@ void	printAll(t_printData data)
 	if (data.specialCase[0])
 		std::cout << data.specialMsg[0];
 	else
-		std::cout << data.c;
+		std::cout << "'" << data.c << "'";
 	std::cout << std::endl;
 	std::cout << "int: ";
 	if (data.specialCase[1])
@@ -131,7 +128,7 @@ void	printAll(t_printData data)
 	else
 	{
 		std::cout << data.f;
-		if (!fmod(data.f, 1))
+		if (!fmod(data.f, 1) && data.d < 1000000)
 			std::cout << ".0";
 	}
 	std::cout << "f" << std::endl;
@@ -141,7 +138,7 @@ void	printAll(t_printData data)
 	else
 	{
 		std::cout << data.d;
-		if (!fmod(data.d, 1))
+		if (!fmod(data.d, 1) && data.d < 1000000)
 			std::cout << ".0";
 	}
 	std::cout << std::endl;
