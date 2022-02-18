@@ -11,7 +11,7 @@ void	dataInit(t_printData*	data)
 
 bool	_isnan(t_printData* data)
 {
-	if (!data->str.compare("nan") || !data->str.compare("nanf")		\
+	if (!data->str.compare("nan") || !data->str.compare("nanf")			\
 		|| !data->str.compare("+nan") || !data->str.compare("+nanf")	\
 		|| !data->str.compare("-nan") || !data->str.compare("-nanf"))
 		return (true);
@@ -29,7 +29,12 @@ bool	_isinf(t_printData* data)
 
 void	doubleConv(t_printData* data)
 {
-	data->d = atof(data->arg);
+	if (data->str.length() == 1 && !isdigit(data->str[0]))
+	{
+		data->d = static_cast<double>(data->arg[0]);
+	}
+	else
+		data->d = atof(data->arg);
 	if (_isnan(data))
 	{
 		data->specialCase[3] = true;
@@ -70,7 +75,7 @@ void	intConv(t_printData* data)
 		data->specialCase[1] = true;
 		data->specialMsg[1] = CNV_MSG;
 	}
-	else if (_isnan(data) /* || data->d / data->d != 1 */)
+	else if (_isnan(data))
 	{
 		data->specialCase[1] = true;
 		data->specialMsg[1] = CNV_MSG;

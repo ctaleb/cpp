@@ -59,7 +59,7 @@ void	identify(Base& p)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << " Not A." << std::endl;
 		try
 		{
 			identifier = dynamic_cast<B&>(p);
@@ -68,7 +68,7 @@ void	identify(Base& p)
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cout << e.what() << " Not B."  << std::endl;
 			try
 			{
 				identifier = dynamic_cast<C&>(p);
@@ -77,7 +77,7 @@ void	identify(Base& p)
 			}
 			catch(const std::exception& e)
 			{
-				std::cerr << e.what() << std::endl;
+				std::cout << e.what() << " Not C." << std::endl;
 			}
 		}
 	}
