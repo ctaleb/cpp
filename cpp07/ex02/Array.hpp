@@ -15,10 +15,12 @@ public:
 	Array(void) : _size(0)
 	{
 		_grid = new T[0];
+		memset(_grid, 0, _size);
 	}
 	Array(unsigned int n) : _size(n)
 	{
 		_grid = new T[n];
+		memset(_grid, 0, _size);
 	}
 	~Array(void)
 	{

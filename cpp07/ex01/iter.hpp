@@ -5,7 +5,7 @@
 # include <string>
 
 template <typename T>
-void	iter(T array[], int size, void (*iterator)(T))
+void	iter(T array[], int size, void (*iterator)(T const& var))
 {
 	for (int i = 0; i < size; i++)
 		iterator(array[i]);

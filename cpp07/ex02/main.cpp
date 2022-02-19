@@ -2,9 +2,10 @@
 
 int	main(void)
 {
-	Array<std::string>	sRay();
+	Array<std::string>	sRay;
 	Array<int>			iRay(5);
 
+	std::cout << *sRay.getArray() << "\t" << sRay.getArray() << std::endl;
 	std::cout << *iRay.getArray() << "\t" << iRay.getArray() << std::endl;
 
 	iRay[0] = 7;
