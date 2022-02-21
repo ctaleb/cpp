@@ -7,6 +7,7 @@ int	main(void)
 
 	std::cout << *sRay.getArray() << "\t" << sRay.getArray() << std::endl;
 	std::cout << *iRay.getArray() << "\t" << iRay.getArray() << std::endl;
+	std::cout << iRay[2] << std::endl;
 
 	iRay[0] = 7;
 	std::cout << iRay[0] << std::endl;

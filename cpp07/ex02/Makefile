@@ -18,7 +18,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@ -I.
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $< -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) $(RFLAGS) $(OBJS)
