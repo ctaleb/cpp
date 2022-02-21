@@ -3,7 +3,7 @@
 int main(void)
 {
 	std::vector<int>	lst;
-	int					n;
+	std::vector<int>::const_iterator	n;
 	int					f;
 
 	lst.push_back(5);
@@ -16,11 +16,16 @@ int main(void)
 	{
 		f = rand() % 10;
 		n = easyfind(lst, f);
-		std::cout << "Occurence " << lst[n] << " found at index " << n << "." << std::endl;
+		std::cout << "Occurence " << f << " found!" << std::endl;
 	}
 	catch (std::exception& e)
 	{
 		std::cout << f << " " << e.what() << std::endl;
 	}
+	lst.push_back(1);
+	n = easyfind(lst, 1);
+	std::cout << "Occurence " << *n << " found!" << std::endl;
+	n++;
+	std::cout << "     followed by " << *n << std::endl;
 	return (0);
 }

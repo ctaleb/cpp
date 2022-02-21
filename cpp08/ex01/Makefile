@@ -1,5 +1,5 @@
 CC		=	c++
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -g3
 
 RM		=	rm
 RFLAGS	=	-rf
@@ -19,7 +19,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@ -I.
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $< -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) $(RFLAGS) $(OBJS)
