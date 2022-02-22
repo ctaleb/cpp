@@ -12,10 +12,10 @@
 class Span
 {
 private:
-	Span(void);
-
 	unsigned long		_size;
 	std::vector<int>	_span;
+
+	Span(void);
 public:
 	~Span(void);
 	Span(int N);
@@ -27,6 +27,7 @@ public:
 	int		shortestSpan(void);
 	int		longestSpan(void);
 	void	fillUp(void);
+	void	printSpan(void);
 
 	class SpanFullException : public std::exception
 	{

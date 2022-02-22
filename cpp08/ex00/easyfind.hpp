@@ -19,9 +19,9 @@ public:
 };
 
 template <typename C>
-typename C::const_iterator	easyfind(C& container, int n)
+typename C::iterator	easyfind(C& container, int n)
 {
-	typename C::const_iterator	result;
+	typename C::iterator	result;
 
 	result = std::find(container.begin(), container.end(), n);
 	if (result == container.end())

@@ -3,7 +3,7 @@
 int main(void)
 {
 	std::vector<int>	lst;
-	std::vector<int>::const_iterator	n;
+	std::vector<int>::iterator	n;
 	int					f;
 
 	lst.push_back(5);

@@ -5,6 +5,8 @@ int	main(void)
 	Span	tmp(40);
 
 	tmp.fillUp();
+	tmp.printSpan();
+	std::cout << "-------------------" << std::endl;
 	try
 	{
 		tmp.addNumber(5);
@@ -13,6 +15,13 @@ int	main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << "-------------------" << std::endl;
+	Span	dst(tmp);
+	dst.printSpan();
+	std::cout << "-------------------" << std::endl;
+	Span	mirror(2);
+	mirror = dst;
+	mirror.printSpan();
 	std::cout << "-------------------" << std::endl;
 	Span sp = Span(5);
 	sp.addNumber(6);
